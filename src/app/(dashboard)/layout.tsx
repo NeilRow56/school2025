@@ -25,7 +25,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div>
           <Navbar />
         </div>
-        <main className='container'>{children}</main>
+        {children}
       </SidebarInset>
     </SidebarProvider>
   )
