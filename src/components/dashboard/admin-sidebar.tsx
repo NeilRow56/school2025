@@ -56,19 +56,19 @@ const data = {
     {
       title: 'Admin',
       url: '/admin',
-      icon: Library,
-      isActive: false,
+      icon: PartyPopperIcon,
+      visible: ['admin', 'teacher', 'student', 'parent'],
       items: [
         {
-          title: 'Admin - home',
+          title: 'Administrator schedules',
           url: '/admin'
         },
         {
-          title: 'Starred',
+          title: 'Explorer',
           url: '#'
         },
         {
-          title: 'Settings',
+          title: 'Quantum',
           url: '#'
         }
       ]
@@ -77,6 +77,7 @@ const data = {
       title: 'Teacher',
       url: '/teacher',
       icon: PartyPopperIcon,
+      visible: ['teacher', 'student', 'parent'],
       items: [
         {
           title: 'Teachers schedule',
@@ -96,6 +97,7 @@ const data = {
       title: 'Students',
       url: '/student',
       icon: Receipt,
+      visible: ['student', 'parent'],
       items: [
         {
           title: 'Student schedule',
@@ -119,6 +121,7 @@ const data = {
       title: 'Parents',
       url: '/parent',
       icon: Settings2,
+      visible: ['parent'],
       items: [
         {
           title: 'Parents schedule',
