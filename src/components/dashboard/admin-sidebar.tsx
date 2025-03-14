@@ -125,7 +125,7 @@ const data = {
       items: [
         {
           title: 'Parents schedule',
-          url: '/parents'
+          url: '/parent'
         },
         {
           title: 'Team',
