@@ -32,7 +32,7 @@ function Logo() {
         <div>
           <Link href='/'>
             <h3 className='text-primary mt-2 text-center font-bold lg:text-xl'>
-              Library
+              School
             </h3>
           </Link>
         </div>

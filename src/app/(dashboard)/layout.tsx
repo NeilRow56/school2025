@@ -19,7 +19,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
           <SidebarTrigger className='-ml-1' />
           <Separator orientation='vertical' className='mr-2 h-4' />
           <Breadcrumb className='text-primary hidden text-xl md:block'>
-            Your local library online!
+            Your local school online!
           </Breadcrumb>
         </header>
         <div>

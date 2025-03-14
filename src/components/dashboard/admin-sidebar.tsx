@@ -54,8 +54,8 @@ const data = {
   ],
   navMain: [
     {
-      title: 'Catalogue',
-      url: '#',
+      title: 'Admin',
+      url: '/admin',
       icon: Library,
       isActive: false,
       items: [
@@ -74,13 +74,13 @@ const data = {
       ]
     },
     {
-      title: 'Activities',
-      url: '#',
+      title: 'Teacher',
+      url: '/teacher',
       icon: PartyPopperIcon,
       items: [
         {
-          title: 'Activities schedule',
-          url: '/admin/activities'
+          title: 'Teachers schedule',
+          url: '/teacher'
         },
         {
           title: 'Explorer',
@@ -93,13 +93,13 @@ const data = {
       ]
     },
     {
-      title: 'Fines',
-      url: '#',
+      title: 'Students',
+      url: '/student',
       icon: Receipt,
       items: [
         {
-          title: 'Fines schedule',
-          url: '/admin/fines'
+          title: 'Student schedule',
+          url: '/student'
         },
         {
           title: 'Get Started',
@@ -116,36 +116,13 @@ const data = {
       ]
     },
     {
-      title: 'Categories',
-      url: '#',
+      title: 'Parents',
+      url: '/parent',
       icon: Settings2,
       items: [
         {
-          title: 'Categories schedule',
-          url: '/admin/categories'
-        },
-        {
-          title: 'Team',
-          url: '#'
-        },
-        {
-          title: 'Billing',
-          url: '#'
-        },
-        {
-          title: 'Limits',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Users',
-      url: '#',
-      icon: User2Icon,
-      items: [
-        {
-          title: 'User schedule',
-          url: '/admin/users'
+          title: 'Parents schedule',
+          url: '/parents'
         },
         {
           title: 'Team',
