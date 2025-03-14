@@ -5,6 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-lama-sky: var(--lama-sky);
+  --color-lama-sky-light: var(--lama-sky-light);
+  --color-lama-purple: var(--lama-purple);
+  --color-lama-purple-light: var(--lama-purple-light);
+  --color-lama-yellow: var(--lama-yellow);
+  --color-lama-yellow-light: var(--lama-yellow-light);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -46,8 +52,14 @@
 }
 
 :root {
-  --background: hsl(0 0% 100%);
+  --lama-sky: hsl(200.6 94.4% 86.1%);
+  --lama-sky-light: hsl(204 93.8% 93.7%);
+  --lama-purple: hsl(269.2 97.4% 85.1%);
+  --lama-purple-light: hsl(268.6 100% 91.8%);
+  --lama-yellow: hsl(52.8 98.3% 76.9%);
+  --lama-yellow-light: hsl(54.9 96.7% 88%);
   --foreground: hsl(222.2 84% 4.9%);
+  --background: hsl(0 0% 100%);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(222.2 84% 4.9%);
   --popover: hsl(0 0% 100%);
