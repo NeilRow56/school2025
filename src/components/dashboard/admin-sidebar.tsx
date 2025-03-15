@@ -84,8 +84,8 @@ const data = {
           url: '/teacher'
         },
         {
-          title: 'Explorer',
-          url: '#'
+          title: 'Teachers List',
+          url: '/list/teachers'
         },
         {
           title: 'Quantum',
@@ -128,8 +128,8 @@ const data = {
           url: '/parent'
         },
         {
-          title: 'Team',
-          url: '#'
+          title: 'List',
+          url: '/'
         },
         {
           title: 'Billing',
