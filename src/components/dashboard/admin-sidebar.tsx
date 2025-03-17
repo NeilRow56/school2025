@@ -140,6 +140,30 @@ const data = {
           url: '#'
         }
       ]
+    },
+    {
+      title: 'Categories',
+      url: '/categories',
+      icon: Settings2,
+      visible: ['parent'],
+      items: [
+        {
+          title: 'Categories schedule',
+          url: '/categories'
+        },
+        {
+          title: 'List',
+          url: '/'
+        },
+        {
+          title: 'Billing',
+          url: '#'
+        },
+        {
+          title: 'Limits',
+          url: '#'
+        }
+      ]
     }
   ],
   projects: [
