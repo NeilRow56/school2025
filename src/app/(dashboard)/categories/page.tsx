@@ -6,7 +6,7 @@ import CategoriesTable from './categories-table'
 async function CategoriesPage({
   searchParams
 }: {
-  searchParams: { page: string; limit: string }
+  searchParams: Promise<{ page: string; limit: string }>
 }) {
   const params = await searchParams
   const offset = parseInt(params.page || '0')
