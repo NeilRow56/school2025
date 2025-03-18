@@ -104,8 +104,8 @@ const data = {
           url: '/student'
         },
         {
-          title: 'Get Started',
-          url: '#'
+          title: 'Student Table',
+          url: '/list/students'
         },
         {
           title: 'Tutorials',
@@ -126,6 +126,30 @@ const data = {
         {
           title: 'Parents schedule',
           url: '/parent'
+        },
+        {
+          title: 'List',
+          url: '/'
+        },
+        {
+          title: 'Billing',
+          url: '#'
+        },
+        {
+          title: 'Limits',
+          url: '#'
+        }
+      ]
+    },
+    {
+      title: 'Books',
+      url: '/book',
+      icon: Settings2,
+      visible: ['book'],
+      items: [
+        {
+          title: 'Books schedule',
+          url: '/list/books'
         },
         {
           title: 'List',
