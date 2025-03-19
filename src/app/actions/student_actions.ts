@@ -1,48 +1,12 @@
 'use server'
 
-import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
-export async function addCategory(name: string, path: string) {
-  try {
-    const category = await prisma.$transaction([
-      prisma.bookCategory.create({
-        data: {
-          category_name: name
-        }
-      })
-    ])
+import { z } from 'zod'
 
-    revalidatePath(path)
-    return category
-  } catch (error) {
-    throw error
-  }
-}
+import { prisma } from '@/lib/prisma'
 
-export async function updateStudent({
-  id,
-  username,
-  name,
-  surname,
-  email,
-  phone,
-  address,
-  img,
-  bloodType,
-  path
-}: {
-  id: string
-  username: string
-  name: string
-  surname: string
-  email: string
-  phone: string
-  address: string
-  img: string
-  bloodType: string
-  path: string
-}) {
+export async function updateStudent(id: string, name: string, path: string) {
   if (!id) throw new Error('Missing id')
   try {
     await prisma.$transaction([
@@ -63,14 +27,17 @@ export async function updateStudent({
 }
 
 export async function deleteStudent(id: string, path: string) {
-  await prisma.$transaction(
-    async t =>
-      await t.student.delete({
+  try {
+    await prisma.$transaction([
+      prisma.student.delete({
         where: {
           id: id
         }
       })
-  )
+    ])
 
-  revalidatePath(path)
+    revalidatePath(path)
+  } catch (error) {
+    throw error
+  }
 }

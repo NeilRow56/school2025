@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui/table'
+} from '../ui/table'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -37,7 +37,7 @@ import {
 } from '@/components/ui/select'
 
 import React, { CSSProperties } from 'react'
-
+import { Button } from '../ui/button'
 import { Input } from '@/components/ui/input'
 import {
   DropdownMenu,
@@ -45,7 +45,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
-import { Button } from '@/components/ui/button'
 
 const DEFAULT_REACT_TABLE_COLUMN_WIDTH = 150
 
@@ -54,7 +53,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[]
 }
 
-const StudentsDataTable = <TData, TValue>({
+const DataTable2 = <TData, TValue>({
   data,
   columns
 }: DataTableProps<TData, TValue>) => {
@@ -85,7 +84,7 @@ const StudentsDataTable = <TData, TValue>({
     <>
       <div className='flex items-center pb-2'>
         <Input
-          placeholder='Filter team by name...'
+          placeholder='Filter managers...'
           id='name'
           value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
           onChange={event =>
@@ -267,4 +266,4 @@ const StudentsDataTable = <TData, TValue>({
   )
 }
 
-export default StudentsDataTable
+export default DataTable2

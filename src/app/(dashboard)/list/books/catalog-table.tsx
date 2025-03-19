@@ -10,6 +10,7 @@ import ConfirmationDialog from '@/components/shared/confirmation-dialog'
 import { Book, columns } from './columns'
 import { deleteBook } from '@/app/actions/book_actions'
 import AddBookDialog from '@/components/dashboard/books/add-book-dialog'
+import DataTable2 from '@/components/shared/data-table2'
 
 type props = {
   data: Book[]

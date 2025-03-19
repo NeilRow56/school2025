@@ -153,7 +153,7 @@ const data = {
         },
         {
           title: 'List',
-          url: '/'
+          url: '/list/books'
         },
         {
           title: 'Billing',

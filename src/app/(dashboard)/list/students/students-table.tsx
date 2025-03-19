@@ -8,8 +8,7 @@ import { usePathname } from 'next/navigation'
 import { toast } from 'sonner'
 
 import { DataTable } from '@/components/shared/data-table'
-import AddCategoryDialog from '@/components/dashboard/categories/add-category-dialog'
-import ConfirmationDialog from '@/components/shared/confirmation-dialog'
+
 import { deleteStudent } from '@/app/actions/student_actions'
 
 type props = {

@@ -31,8 +31,6 @@ async function BookPage() {
     prisma.book.count()
   ])
 
-  console.log(books)
-
   return (
     <div className='flex flex-col space-y-4 p-2'>
       <div className='flex w-full justify-end'>

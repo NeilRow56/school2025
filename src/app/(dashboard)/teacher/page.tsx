@@ -1,8 +1,6 @@
 import { prisma } from '@/lib/prisma'
 
-const TeacherPage = async () => {
-  const teachers = await prisma.teacher.findMany()
-  console.log(teachers)
+const TeacherPage = () => {
   return (
     <div>
       <h1>Teacher Page</h1>

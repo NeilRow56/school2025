@@ -24,11 +24,11 @@ export default function NotFound() {
 
         <div className='flex flex-col justify-center gap-4 sm:flex-row'>
           <Link
-            href={'/clients'}
+            href={'/admin'}
             className='bg-primary hover:bg-primary/50 mt-6 flex items-center justify-center rounded-md px-4 py-2 text-white transition-colors'
           >
             <ArrowLeft className='mr-2 h-4 w-4' />
-            Back to Client List
+            Back
           </Link>
         </div>
 
