@@ -3,7 +3,7 @@ export type Teacher = {
   teacherId: string
   name: string
   email?: string
-  photo: string
+  img: string
   phone: string
   classes: string[]
   subjects: string[]

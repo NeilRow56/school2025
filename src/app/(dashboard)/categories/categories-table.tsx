@@ -16,7 +16,6 @@ type props = {
     category_id: number
     category_name: string
   }[]
-  total: number
 }
 function CategoriesTable({ data }: { data: props }) {
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
@@ -51,7 +50,6 @@ function CategoriesTable({ data }: { data: props }) {
       <DataTable
         data={data.data}
         columns={columns}
-        total={data.total}
         filter_column='category_name'
         onRowDelete={handleRowDelete}
         onRowEdit={handleRowEdit}

@@ -13,6 +13,13 @@ import { Teacher } from '@/types/teacher-types'
 import { columns } from './teacherColumns'
 import { teachersData } from '@/lib/constants/data'
 
+type props = {
+  data: {
+    category_id: number
+    category_name: string
+  }[]
+}
+
 function TeachersTable() {
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
   const [itemToAction, setItemToAction] = useState<Teacher>()

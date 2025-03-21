@@ -31,7 +31,7 @@ export const columns: ColumnDef<Teacher>[] = [
     cell: ({ row }) => (
       <div className='flex items-center p-1'>
         <Image
-          src={row.original.photo}
+          src={row.original.img || '/noAvatar.png'}
           alt=''
           width={40}
           height={40}
