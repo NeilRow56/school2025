@@ -85,10 +85,10 @@ const DataTable2 = <TData, TValue>({
       <div className='flex items-center pb-2'>
         <Input
           placeholder='Filter managers...'
-          id='name'
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+          id='info'
+          value={(table.getColumn('info')?.getFilterValue() as string) ?? ''}
           onChange={event =>
-            table.getColumn('name')?.setFilterValue(event.target.value)
+            table.getColumn('info')?.setFilterValue(event.target.value)
           }
           className='max-w-sm'
         />

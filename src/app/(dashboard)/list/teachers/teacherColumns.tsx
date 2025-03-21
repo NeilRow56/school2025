@@ -14,18 +14,17 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
+import { MoreHorizontal } from 'lucide-react'
 
 import { Teacher } from '@/types/teacher-types'
-import NumberFormat from '@/components/shared/number-format'
 
 export const columns: ColumnDef<Teacher>[] = [
   {
-    accessorKey: 'name',
+    accessorKey: 'info',
     header: () => {
       return (
         <div className='flex justify-start pl-4 font-semibold text-orange-400'>
-          Name
+          Info
         </div>
       )
     },
@@ -38,32 +37,15 @@ export const columns: ColumnDef<Teacher>[] = [
           height={40}
           className='mr-4 h-10 w-10 rounded-full object-cover md:hidden xl:block'
         />
-        <div>{row.original.name}</div>
+        <div className='flex flex-col'>
+          <h3 className='font-semibold'>{row.original.name}</h3>
+          <p className='text-xs text-gray-500'>{row.original?.email}</p>
+        </div>
       </div>
     ),
-    footer: 'Total'
+    footer: 'Info'
   },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400 lg:table-cell'>
-          <Button
-            variant='ghost'
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Email
-            <ArrowUpDown className='ml-2 h-4 w-4' />
-          </Button>
-        </div>
-      )
-    },
-    cell: ({ row }) => (
-      <div className={cn('rounded-lg p-2 text-start capitalize')}>
-        {row.original.email}
-      </div>
-    )
-  },
+
   {
     accessorKey: 'teacherId',
     header: () => {
@@ -82,8 +64,14 @@ export const columns: ColumnDef<Teacher>[] = [
           Classes
         </div>
       )
-    }
+    },
+    cell: ({ row }) => (
+      <div className={cn('rounded-lg p-2 capitalize')}>
+        {row.original.classes.join(', ')}
+      </div>
+    )
   },
+
   {
     accessorKey: 'subjects',
     header: () => {
@@ -92,7 +80,12 @@ export const columns: ColumnDef<Teacher>[] = [
           Subjects
         </div>
       )
-    }
+    },
+    cell: ({ row }) => (
+      <div className={cn('rounded-lg p-2 capitalize')}>
+        {row.original.subjects.join(', ')}
+      </div>
+    )
   },
   {
     accessorKey: 'phone',

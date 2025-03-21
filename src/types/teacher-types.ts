@@ -1,6 +1,6 @@
 export type Teacher = {
   id: number
-  //   teacherId: string
+  teacherId: string
   name: string
   email?: string
   photo: string
