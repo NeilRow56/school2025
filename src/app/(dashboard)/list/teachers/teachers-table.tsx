@@ -7,28 +7,24 @@ import { toast } from 'sonner'
 import { DataTable } from '@/components/shared/data-table'
 import ConfirmationDialog from '@/components/shared/confirmation-dialog'
 
-import { Book, columns } from './columns'
 import { deleteBook } from '@/app/actions/book_actions'
-import AddBookDialog from '@/components/dashboard/books/add-book-dialog'
-import DataTable2 from '@/components/shared/data-table2'
 
-type props = {
-  data: Book[]
-  total: number
-}
+import { Teacher } from '@/types/teacher-types'
+import { columns } from './teacherColumns'
+import { teachersData } from '@/lib/constants/data'
 
-function CatalogTable({ data }: { data: props }) {
+function TeachersTable() {
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
-  const [itemToAction, setItemToAction] = useState<Book>()
+  const [itemToAction, setItemToAction] = useState<Teacher>()
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
-  const handleRowDelete = async (item: Book) => {
+  const handleRowDelete = async (item: Teacher) => {
     setOpenConfirmationDialog(true)
     setItemToAction(item)
   }
 
-  const handleRowEdit = (item: Book) => {
+  const handleRowEdit = (item: Teacher) => {
     setOpen(true)
     setItemToAction(item)
   }
@@ -38,7 +34,7 @@ function CatalogTable({ data }: { data: props }) {
 
     if (itemToAction) {
       startTransition(async () => {
-        await deleteBook(itemToAction.bookId, pathname)
+        await deleteBook(itemToAction.id, pathname)
       })
 
       toast(`${itemToAction.name} deleted`)
@@ -48,13 +44,12 @@ function CatalogTable({ data }: { data: props }) {
     <>
       <DataTable
         columns={columns}
-        data={data.data}
-        // total={data.total}
+        data={teachersData}
         filter_column='name'
         onRowDelete={handleRowDelete}
         onRowEdit={handleRowEdit}
       />
-      <AddBookDialog open={open} setOpen={setOpen} book={itemToAction} />
+      {/* <AddBookDialog open={open} setOpen={setOpen} book={itemToAction} /> */}
       <ConfirmationDialog
         open={openConfirmationDialog}
         onClose={() => setOpenConfirmationDialog(false)}
@@ -65,4 +60,4 @@ function CatalogTable({ data }: { data: props }) {
   )
 }
 
-export default CatalogTable
+export default TeachersTable

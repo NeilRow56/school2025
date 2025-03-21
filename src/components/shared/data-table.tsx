@@ -40,7 +40,7 @@ declare module '@tanstack/react-table' {
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  total: number
+  // total: number
   filter_column: string
   onRowDelete: (item: TData) => void
   onRowEdit: (item: TData) => void
@@ -49,7 +49,7 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
-  total,
+  // total,
   filter_column,
   onRowDelete,
   onRowEdit
@@ -72,7 +72,7 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
 
-    rowCount: total,
+    // rowCount: total,
     meta: {
       onDelete: item => onRowDelete(item),
       onEdit: item => onRowEdit(item)
@@ -86,8 +86,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className='container mx-auto max-w-4xl space-y-2'>
-      <DataTableFilterInput table={table} column={filter_column} />
-      <DataTableViewOptions table={table} />
+      <div className='mb-4 flex items-center justify-between'>
+        <div className='flex flex-col'>
+          <h3 className='font-semibold'>Filter by name</h3>
+          <DataTableFilterInput table={table} column={filter_column} />
+        </div>
+        <div>
+          <div className='h-7' />
+          <DataTableViewOptions table={table} />
+        </div>
+      </div>
+
       <div className='rounded-md border'>
         <Table>
           <TableHeader>

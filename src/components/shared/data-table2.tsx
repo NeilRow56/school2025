@@ -19,6 +19,7 @@ import {
 import {
   ColumnDef,
   ColumnFiltersState,
+  RowData,
   SortingState,
   VisibilityState,
   flexRender,
@@ -45,17 +46,32 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import DataTableFilterInput from './data-table-filter-input'
+import { DataTableViewOptions } from './data-table-view-options'
 
 const DEFAULT_REACT_TABLE_COLUMN_WIDTH = 150
+
+declare module '@tanstack/react-table' {
+  interface TableMeta<TData extends RowData> {
+    onDelete: (item: TData) => void
+    onEdit: (item: TData) => void
+  }
+}
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  filter_column: string
+  // onRowDelete: (item: TData) => void
+  // onRowEdit: (item: TData) => void
 }
 
 const DataTable2 = <TData, TValue>({
   data,
-  columns
+  columns,
+  filter_column
+  // onRowDelete,
+  // onRowEdit
 }: DataTableProps<TData, TValue>) => {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -83,7 +99,9 @@ const DataTable2 = <TData, TValue>({
   return (
     <>
       <div className='flex items-center pb-2'>
-        <Input
+        <DataTableFilterInput table={table} column={filter_column} />
+        <DataTableViewOptions table={table} />
+        {/* <Input
           placeholder='Filter managers...'
           id='info'
           value={(table.getColumn('info')?.getFilterValue() as string) ?? ''}
@@ -91,8 +109,8 @@ const DataTable2 = <TData, TValue>({
             table.getColumn('info')?.setFilterValue(event.target.value)
           }
           className='max-w-sm'
-        />
-        <DropdownMenu>
+        /> */}
+        {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant='outline' className='ml-auto'>
               Columns
@@ -115,7 +133,7 @@ const DataTable2 = <TData, TValue>({
                 )
               })}
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
       </div>
       <div className='rounded-md border'>
         <Table>

@@ -45,6 +45,21 @@ export const columns: ColumnDef<Teacher>[] = [
     ),
     footer: 'Info'
   },
+  {
+    accessorKey: 'name',
+    header: () => {
+      return (
+        <div className='hidden justify-start font-semibold text-orange-400'>
+          Hidden Name
+        </div>
+      )
+    },
+    cell: ({ row }) => (
+      <div className={cn('hidden rounded-lg p-2 capitalize')}>
+        {row.original.name}
+      </div>
+    )
+  },
 
   {
     accessorKey: 'teacherId',

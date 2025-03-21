@@ -10,6 +10,8 @@ import { EmptyState } from '@/components/shared/empty-state'
 
 import DataTable2 from '@/components/shared/data-table2'
 import { columns } from './teacherColumns'
+import { DataTable } from '@/components/shared/data-table'
+import TeachersTable from './teachers-table'
 
 const TeachersListPage = () => {
   return (
@@ -63,7 +65,7 @@ const TeachersListPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <DataTable2 data={teachersData} columns={columns} />
+                <TeachersTable />
               </CardContent>
             </Card>
           </div>

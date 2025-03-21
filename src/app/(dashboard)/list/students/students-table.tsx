@@ -65,7 +65,7 @@ function StudentsTable({ data }: { data: props }) {
       <DataTable
         data={data.data}
         columns={columns}
-        total={data.total}
+        // total={data.total}
         filter_column='name'
         onRowDelete={handleRowDelete}
         onRowEdit={handleRowEdit}
