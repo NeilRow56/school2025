@@ -16,7 +16,20 @@ import {
 import Link from 'next/link'
 import { MoreHorizontal } from 'lucide-react'
 
-import { Teacher } from '@/types/teacher-types'
+export type Teacher = {
+  id: string
+  username: string
+  name: string
+  // surmame: string
+  email?: string | null
+  phone: string | null
+  address: string
+  img: string | null
+  // bloodType: string
+  // classes?: { name: string }[]
+  // subjects: { name: string }[]
+  // lessons: { name: string }[]
+}
 
 export const columns: ColumnDef<Teacher>[] = [
   {
@@ -39,7 +52,7 @@ export const columns: ColumnDef<Teacher>[] = [
         />
         <div className='flex flex-col'>
           <h3 className='font-semibold'>{row.original.name}</h3>
-          <p className='text-xs text-gray-500'>{row.original?.email}</p>
+          <p className='text-xs text-gray-500'>{row.original.email}</p>
         </div>
       </div>
     ),
@@ -60,48 +73,54 @@ export const columns: ColumnDef<Teacher>[] = [
       </div>
     )
   },
+  {
+    accessorKey: 'username',
 
-  {
-    accessorKey: 'teacherId',
     header: () => {
       return (
-        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-          Teacher ID
-        </div>
-      )
-    }
-  },
-  {
-    accessorKey: 'classes',
-    header: () => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-          Classes
+        <div className='flex justify-end pr-4 font-semibold text-orange-400'>
+          Username
         </div>
       )
     },
     cell: ({ row }) => (
-      <div className={cn('rounded-lg p-2 capitalize')}>
-        {row.original.classes.join(', ')}
+      <div className={cn('rounded-lg p-2 text-right capitalize')}>
+        {row.original.username}
       </div>
     )
   },
 
-  {
-    accessorKey: 'subjects',
-    header: () => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-          Subjects
-        </div>
-      )
-    },
-    cell: ({ row }) => (
-      <div className={cn('rounded-lg p-2 capitalize')}>
-        {row.original.subjects.join(', ')}
-      </div>
-    )
-  },
+  // {
+  //   accessorKey: 'classes',
+  //   header: () => {
+  //     return (
+  //       <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
+  //         Classes
+  //       </div>
+  //     )
+  //   },
+  //   cell: ({ row }) => (
+  //     <div className={cn('rounded-lg p-2 capitalize')}>
+  //       {row.original.classes?.join(',')}
+  //     </div>
+  //   )
+  // },
+
+  // {
+  //   accessorKey: 'subjects',
+  //   header: () => {
+  //     return (
+  //       <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
+  //         Subjects
+  //       </div>
+  //     )
+  //   },
+  //   cell: ({ row }) => (
+  //     <div className={cn('rounded-lg p-2 capitalize')}>
+  //       {row.original.subjects.join(', ')}
+  //     </div>
+  //   )
+  // },
   {
     accessorKey: 'phone',
     header: () => {

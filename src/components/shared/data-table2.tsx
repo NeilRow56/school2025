@@ -39,13 +39,6 @@ import {
 
 import React, { CSSProperties } from 'react'
 import { Button } from '../ui/button'
-import { Input } from '@/components/ui/input'
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
 import DataTableFilterInput from './data-table-filter-input'
 import { DataTableViewOptions } from './data-table-view-options'
 

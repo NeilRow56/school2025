@@ -9,18 +9,16 @@ import ConfirmationDialog from '@/components/shared/confirmation-dialog'
 
 import { deleteBook } from '@/app/actions/book_actions'
 
-import { Teacher } from '@/types/teacher-types'
-import { columns } from './teacherColumns'
+import { columns, Teacher } from './teacherColumns'
 import { teachersData } from '@/lib/constants/data'
+import { deleteTeacher } from '@/app/actions/teacher_actions'
+// import { columns, Teacher } from './columns'
 
 type props = {
-  data: {
-    category_id: number
-    category_name: string
-  }[]
+  data: Teacher[]
 }
 
-function TeachersTable() {
+function TeachersTable({ data }: { data: props }) {
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
   const [itemToAction, setItemToAction] = useState<Teacher>()
   const [open, setOpen] = useState(false)
@@ -41,7 +39,7 @@ function TeachersTable() {
 
     if (itemToAction) {
       startTransition(async () => {
-        await deleteBook(itemToAction.id, pathname)
+        await deleteTeacher(itemToAction.id, pathname)
       })
 
       toast(`${itemToAction.name} deleted`)
@@ -51,7 +49,7 @@ function TeachersTable() {
     <>
       <DataTable
         columns={columns}
-        data={teachersData}
+        data={data.data}
         filter_column='name'
         onRowDelete={handleRowDelete}
         onRowEdit={handleRowEdit}

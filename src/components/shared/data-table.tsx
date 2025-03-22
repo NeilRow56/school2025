@@ -26,7 +26,7 @@ import {
 import { DataTableViewOptions } from './data-table-view-options'
 import { DataTablePagination } from './data-table-pagination'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import DataTableFilterInput from './data-table-filter-input'
 

@@ -8,12 +8,25 @@ import TableSearch from '@/components/shared/table-search'
 import { role, teachersData } from '@/lib/constants/data'
 import { EmptyState } from '@/components/shared/empty-state'
 
-import DataTable2 from '@/components/shared/data-table2'
-import { columns } from './teacherColumns'
-import { DataTable } from '@/components/shared/data-table'
 import TeachersTable from './teachers-table'
+import { prisma } from '@/lib/prisma'
 
-const TeachersListPage = () => {
+const TeachersListPage = async () => {
+  const teachers = await prisma.teacher.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    },
+    select: {
+      id: true,
+      username: true,
+      name: true,
+      email: true,
+      phone: true,
+      address: true,
+      img: true
+    }
+  })
+
   return (
     <div className='m-4 mt-0 flex-1 rounded-md bg-white p-4'>
       {/* TOP */}
@@ -65,7 +78,7 @@ const TeachersListPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <TeachersTable />
+                <TeachersTable data={{ data: teachers }} />
               </CardContent>
             </Card>
           </div>

@@ -8,9 +8,8 @@ async function CategoriesPage() {
   // const offset = parseInt(params.page || '0')
   // const take = parseInt(params.limit || '10')
 
-  const [categories, total] = await prisma.$transaction([
-    prisma.bookCategory.findMany(),
-    prisma.bookCategory.count()
+  const [categories] = await prisma.$transaction([
+    prisma.bookCategory.findMany()
   ])
 
   return (
@@ -19,7 +18,7 @@ async function CategoriesPage() {
         <AddCategoryButton />
       </div>
 
-      <CategoriesTable data={{ data: categories, total: total }} />
+      <CategoriesTable data={{ data: categories }} />
     </div>
   )
 }
