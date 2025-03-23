@@ -13,20 +13,22 @@ import { prisma } from '@/lib/prisma'
 
 const TeachersListPage = async () => {
   const teachers = await prisma.teacher.findMany({
-    orderBy: {
-      createdAt: 'desc'
-    },
-    select: {
-      id: true,
-      username: true,
-      name: true,
-      email: true,
-      phone: true,
-      address: true,
-      img: true
+    include: {
+      subjects: true,
+      classes: true
     }
   })
 
+  // const [data, count] = await prisma.$transaction([
+  //   prisma.teacher.findMany({
+  //     include: {
+  //       subjects: true,
+  //       classes: true
+  //     }
+  //   }),
+  //   prisma.teacher.count()
+  // ])
+  console.log(teachers)
   return (
     <div className='m-4 mt-0 flex-1 rounded-md bg-white p-4'>
       {/* TOP */}

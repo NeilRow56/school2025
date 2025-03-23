@@ -9,27 +9,27 @@ import ConfirmationDialog from '@/components/shared/confirmation-dialog'
 
 import { deleteBook } from '@/app/actions/book_actions'
 
-import { columns, Teacher } from './teacherColumns'
+import { columns, TeacherList } from './teacherColumns'
 import { teachersData } from '@/lib/constants/data'
 import { deleteTeacher } from '@/app/actions/teacher_actions'
 // import { columns, Teacher } from './columns'
 
 type props = {
-  data: Teacher[]
+  data: TeacherList[]
 }
 
 function TeachersTable({ data }: { data: props }) {
   const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
-  const [itemToAction, setItemToAction] = useState<Teacher>()
+  const [itemToAction, setItemToAction] = useState<TeacherList>()
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
-  const handleRowDelete = async (item: Teacher) => {
+  const handleRowDelete = async (item: TeacherList) => {
     setOpenConfirmationDialog(true)
     setItemToAction(item)
   }
 
-  const handleRowEdit = (item: Teacher) => {
+  const handleRowEdit = (item: TeacherList) => {
     setOpen(true)
     setItemToAction(item)
   }

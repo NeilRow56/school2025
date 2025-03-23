@@ -15,23 +15,26 @@ import {
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 import { MoreHorizontal } from 'lucide-react'
+import { Class, Subject, Teacher } from '@prisma/client'
+import { createRowActions } from '@/components/shared/data-table-actions'
 
-export type Teacher = {
-  id: string
-  username: string
-  name: string
-  // surmame: string
-  email?: string | null
-  phone: string | null
-  address: string
-  img: string | null
-  // bloodType: string
-  // classes?: { name: string }[]
-  // subjects: { name: string }[]
-  // lessons: { name: string }[]
+// export type Teacher = {
+//   id: string
+//   username: string
+//   name: string
+
+//   email?: string | null
+//   phone: string | null
+//   address: string
+//   img: string | null
+
+// }
+
+export type TeacherList = Teacher & { subjects: Subject[] } & {
+  classes: Class[]
 }
 
-export const columns: ColumnDef<Teacher>[] = [
+export const columns: ColumnDef<TeacherList>[] = [
   {
     accessorKey: 'info',
     header: () => {
@@ -90,37 +93,37 @@ export const columns: ColumnDef<Teacher>[] = [
     )
   },
 
-  // {
-  //   accessorKey: 'classes',
-  //   header: () => {
-  //     return (
-  //       <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-  //         Classes
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => (
-  //     <div className={cn('rounded-lg p-2 capitalize')}>
-  //       {row.original.classes?.join(',')}
-  //     </div>
-  //   )
-  // },
+  {
+    accessorKey: 'classes',
+    header: () => {
+      return (
+        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
+          Classes
+        </div>
+      )
+    },
+    cell: ({ row }) => (
+      <div className={cn('rounded-lg p-2 capitalize')}>
+        {row.original.classes.map(classItem => classItem.name).join(', ')}
+      </div>
+    )
+  },
 
-  // {
-  //   accessorKey: 'subjects',
-  //   header: () => {
-  //     return (
-  //       <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-  //         Subjects
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => (
-  //     <div className={cn('rounded-lg p-2 capitalize')}>
-  //       {row.original.subjects.join(', ')}
-  //     </div>
-  //   )
-  // },
+  {
+    accessorKey: 'subjects',
+    header: () => {
+      return (
+        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
+          Subjects
+        </div>
+      )
+    },
+    cell: ({ row }) => (
+      <div className={cn('rounded-lg p-2 capitalize')}>
+        {row.original.subjects.map(subject => subject.name).join(', ')}
+      </div>
+    )
+  },
   {
     accessorKey: 'phone',
     header: () => {
@@ -142,43 +145,44 @@ export const columns: ColumnDef<Teacher>[] = [
       return <div className='pr-2 text-right font-semibold'></div>
     }
   },
-  {
-    accessorKey: 'actions',
-    header: () => {
-      return (
-        <div className='flex justify-start font-semibold text-orange-400'>
-          Actions
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      // IMPORTANT THIS IS THE TEACHER DATA FROM WHICH YOU CAN GET THE ID
-      const teacher = row.original
+  // {
+  //   accessorKey: 'actions',
+  //   header: () => {
+  //     return (
+  //       <div className='flex justify-start font-semibold text-orange-400'>
+  //         Actions
+  //       </div>
+  //     )
+  //   },
+  //   cell: ({ row }) => {
+  //     // IMPORTANT THIS IS THE TEACHER DATA FROM WHICH YOU CAN GET THE ID
+  //     const teacher = row.original
 
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div className='flex justify-center'>
-              <Button size='icon' variant='ghost'>
-                <MoreHorizontal className='h-4 w-4' />
-              </Button>
-            </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align='end'>
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+  //     return (
+  //       <DropdownMenu>
+  //         <DropdownMenuTrigger asChild>
+  //           <div className='flex justify-center'>
+  //             <Button size='icon' variant='ghost'>
+  //               <MoreHorizontal className='h-4 w-4' />
+  //             </Button>
+  //           </div>
+  //         </DropdownMenuTrigger>
+  //         <DropdownMenuContent align='end'>
+  //           <DropdownMenuLabel>Actions</DropdownMenuLabel>
+  //           <DropdownMenuSeparator />
 
-            <DropdownMenuItem asChild>
-              <Link href={`/list/teachers/${teacher.id}`}>Edit</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href={`list/teachers/${teacher.id}/deleteTeacher`}>
-                Delete
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )
-    }
-  }
+  //           <DropdownMenuItem asChild>
+  //             <Link href={`/list/teachers/${teacher.id}`}>Edit</Link>
+  //           </DropdownMenuItem>
+  //           <DropdownMenuItem asChild>
+  //             <Link href={`list/teachers/${teacher.id}/deleteTeacher`}>
+  //               Delete
+  //             </Link>
+  //           </DropdownMenuItem>
+  //         </DropdownMenuContent>
+  //       </DropdownMenu>
+  //     )
+  //   }
+  // }
+  createRowActions<TeacherList>()
 ]
