@@ -85,7 +85,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className='container mx-auto max-w-4xl space-y-2'>
+    <div className='container mx-auto max-w-4xl'>
       <div className='mb-4 flex items-center justify-between'>
         <div className='flex flex-col'>
           <h3 className='font-semibold'>Filter by name</h3>

@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { ColumnDef, Row, Table } from '@tanstack/react-table'
+import DataTableColumnHeader from './data-table-column-header'
 
 export type GenericColumnDef<T> = ColumnDef<T, unknown>
 
@@ -59,6 +60,13 @@ export function createRowActions<T>({
   edit_label
 }: RowActionProps = {}): GenericColumnDef<T> {
   return {
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Actions'
+        className='pl-5 text-orange-400'
+      />
+    ),
     id: 'actions',
     enableHiding: false,
     cell: ({ row, table }) => (

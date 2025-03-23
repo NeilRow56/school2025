@@ -19,7 +19,7 @@ function Header() {
         {/* desktop */}
         <div className='hidden items-center justify-between gap-2 p-2 sm:flex'>
           {/* logo */}
-          ThemeToggle
+
           <SearchBar />
         </div>
       </header>

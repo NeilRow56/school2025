@@ -28,7 +28,7 @@ const TeachersListPage = async () => {
   //   }),
   //   prisma.teacher.count()
   // ])
-  console.log(teachers)
+
   return (
     <div className='m-4 mt-0 flex-1 rounded-md bg-white p-4'>
       {/* TOP */}
@@ -75,9 +75,9 @@ const TeachersListPage = async () => {
           <div className=''>
             <Card>
               <CardHeader>
-                <CardTitle className='text-primary text-3xl font-bold'>
+                {/* <CardTitle className='text-primary text-3xl font-bold'>
                   Teachers
-                </CardTitle>
+                </CardTitle> */}
               </CardHeader>
               <CardContent>
                 <TeachersTable data={{ data: teachers }} />

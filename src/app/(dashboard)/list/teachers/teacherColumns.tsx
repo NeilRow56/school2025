@@ -17,6 +17,7 @@ import Link from 'next/link'
 import { MoreHorizontal } from 'lucide-react'
 import { Class, Subject, Teacher } from '@prisma/client'
 import { createRowActions } from '@/components/shared/data-table-actions'
+import DataTableColumnHeader from '@/components/shared/data-table-column-header'
 
 // export type Teacher = {
 //   id: string
@@ -36,14 +37,23 @@ export type TeacherList = Teacher & { subjects: Subject[] } & {
 
 export const columns: ColumnDef<TeacherList>[] = [
   {
-    accessorKey: 'info',
-    header: () => {
-      return (
-        <div className='flex justify-start pl-4 font-semibold text-orange-400'>
-          Info
-        </div>
-      )
-    },
+    // accessorKey: 'info',
+    // header: () => {
+    //   return (
+    //     <div className='flex justify-start pl-4 font-semibold text-orange-400'>
+    //       Info
+    //     </div>
+    //   )
+    // },
+    accessorKey: 'name',
+    // enableSorting: is true by default
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Info'
+        className='pl-5 text-orange-400'
+      />
+    ),
     cell: ({ row }) => (
       <div className='flex items-center p-1'>
         <Image
@@ -61,33 +71,19 @@ export const columns: ColumnDef<TeacherList>[] = [
     ),
     footer: 'Info'
   },
-  {
-    accessorKey: 'name',
-    header: () => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400'>
-          Hidden Name
-        </div>
-      )
-    },
-    cell: ({ row }) => (
-      <div className={cn('hidden rounded-lg p-2 capitalize')}>
-        {row.original.name}
-      </div>
-    )
-  },
+
   {
     accessorKey: 'username',
-
-    header: () => {
-      return (
-        <div className='flex justify-end pr-4 font-semibold text-orange-400'>
-          Username
-        </div>
-      )
-    },
+    // enableSorting: is true by default
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Username'
+        className='justify-start pl-2 text-orange-400'
+      />
+    ),
     cell: ({ row }) => (
-      <div className={cn('rounded-lg p-2 text-right capitalize')}>
+      <div className={cn('rounded-lg p-2 text-left capitalize')}>
         {row.original.username}
       </div>
     )
@@ -95,13 +91,14 @@ export const columns: ColumnDef<TeacherList>[] = [
 
   {
     accessorKey: 'classes',
-    header: () => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-          Classes
-        </div>
-      )
-    },
+    // enableSorting: is true by default
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Classes'
+        className='justify-start pl-2 text-orange-400'
+      />
+    ),
     cell: ({ row }) => (
       <div className={cn('rounded-lg p-2 capitalize')}>
         {row.original.classes.map(classItem => classItem.name).join(', ')}
@@ -111,13 +108,14 @@ export const columns: ColumnDef<TeacherList>[] = [
 
   {
     accessorKey: 'subjects',
-    header: () => {
-      return (
-        <div className='hidden justify-start font-semibold text-orange-400 md:table-cell'>
-          Subjects
-        </div>
-      )
-    },
+    enableSorting: false,
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Subjects'
+        className='justify-start pl-2 text-orange-400'
+      />
+    ),
     cell: ({ row }) => (
       <div className={cn('rounded-lg p-2 capitalize')}>
         {row.original.subjects.map(subject => subject.name).join(', ')}
@@ -145,44 +143,6 @@ export const columns: ColumnDef<TeacherList>[] = [
       return <div className='pr-2 text-right font-semibold'></div>
     }
   },
-  // {
-  //   accessorKey: 'actions',
-  //   header: () => {
-  //     return (
-  //       <div className='flex justify-start font-semibold text-orange-400'>
-  //         Actions
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     // IMPORTANT THIS IS THE TEACHER DATA FROM WHICH YOU CAN GET THE ID
-  //     const teacher = row.original
 
-  //     return (
-  //       <DropdownMenu>
-  //         <DropdownMenuTrigger asChild>
-  //           <div className='flex justify-center'>
-  //             <Button size='icon' variant='ghost'>
-  //               <MoreHorizontal className='h-4 w-4' />
-  //             </Button>
-  //           </div>
-  //         </DropdownMenuTrigger>
-  //         <DropdownMenuContent align='end'>
-  //           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-  //           <DropdownMenuSeparator />
-
-  //           <DropdownMenuItem asChild>
-  //             <Link href={`/list/teachers/${teacher.id}`}>Edit</Link>
-  //           </DropdownMenuItem>
-  //           <DropdownMenuItem asChild>
-  //             <Link href={`list/teachers/${teacher.id}/deleteTeacher`}>
-  //               Delete
-  //             </Link>
-  //           </DropdownMenuItem>
-  //         </DropdownMenuContent>
-  //       </DropdownMenu>
-  //     )
-  //   }
-  // }
   createRowActions<TeacherList>()
 ]

@@ -13,6 +13,7 @@ function DataTableFilterInput<TData>({
 }: DataTableInputFilterProps<TData>) {
   return (
     <Input
+      id='filter'
       placeholder='Filter...'
       value={(table.getColumn(column)?.getFilterValue() as string) ?? ''}
       onChange={event =>

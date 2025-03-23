@@ -23,6 +23,7 @@ const TableSearch = () => {
     >
       <Image src='/search.png' alt='' width={14} height={14} />
       <input
+        id='search'
         type='text'
         placeholder='Search...'
         className='w-[200px] bg-transparent p-2 outline-none'
